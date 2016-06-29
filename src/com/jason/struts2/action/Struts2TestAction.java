@@ -6,7 +6,7 @@ package com.jason.struts2.action;
  * @author wufan
  *
  */
-public class Struts2Test {
+public class Struts2TestAction {
 
 	private String name;
 

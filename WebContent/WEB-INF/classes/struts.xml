@@ -6,7 +6,7 @@
 <constant name="struts.devMode" value="true" />
    <package name="firstServlet" extends="struts-default">     
       <action name="hello" 
-            class="com.jason.struts2.action.Struts2Test" 
+            class="com.jason.struts2.action.Struts2TestAction" 
             method="execute">
             <result name="success">/jsp1.jsp</result>
       </action>
