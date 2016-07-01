@@ -1,5 +1,7 @@
 package com.jason.struts2.action;
 
+import com.jason.struts2.constants.ServletConstants;
+
 
 /**
  * 
@@ -10,9 +12,9 @@ public class Struts2TestAction {
 
 	private String name;
 
-	 public String execute() throws Exception {
-	      return "success";
-	   } 
+	public String execute() throws Exception {
+		return ServletConstants.SUCC;
+	}
 	
 	public String getName() {
 		return name;

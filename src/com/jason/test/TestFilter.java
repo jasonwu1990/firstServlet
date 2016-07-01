@@ -32,7 +32,7 @@ public class TestFilter implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		System.out.println("filter生效了");
+//		System.out.println("filter生效了");
 		chain.doFilter(request, response);
 	}
 
