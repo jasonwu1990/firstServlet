@@ -6,9 +6,12 @@
 <constant name="struts.devMode" value="true" />
    <package name="firstServlet" extends="struts-default">     
       <action name="hello" 
-            class="com.jason.struts2.action.Struts2TestAction" 
+            class="com.jason.struts2.action.Test1Action" 
             method="execute">
-            <result name="success">/jsp1.jsp</result>
+            <interceptor-ref name="params"/>
+            <interceptor-ref name="timer"/>
+            <result name="success">/success1.jsp</result>
+            <result name="error">/fail1.jsp</result>
       </action>
    </package>
 </struts>
