@@ -4,14 +4,35 @@
    "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
 <constant name="struts.devMode" value="true" />
-   <package name="firstServlet" extends="struts-default">     
+<constant name="struts.multipart.maxSize" value="1000000" />
+<constant name="struts.i18n.encoding" value="UTF-8" />
+
+   <package name="firstServlet" extends="struts-default">
+   <!-- 
+   <interceptors>
+      	<interceptor name="myInterceptor" class="com.jason.struts2.interceptor.MyInterceptor"></interceptor>
+      </interceptors>
+   
       <action name="hello" 
             class="com.jason.struts2.action.Test1Action" 
             method="execute">
             <interceptor-ref name="params"/>
-            <interceptor-ref name="timer"/>
+            <interceptor-ref name="myInterceptor"/>
             <result name="success">/success1.jsp</result>
             <result name="error">/fail1.jsp</result>
+      </action> -->
+      
+      <action name="upload"
+      			class="com.jason.struts2.action.UploadFileAction"
+      			method="execute">
+       		<interceptor-ref name="fileUpload">
+           		<param name="allowedTypes">image/jpeg,image/gif</param>
+       		</interceptor-ref>
+       		<!-- 默认拦截器必须放在fileUpload之后，否则无效 -->
+       		<interceptor-ref name="basicStack"/>
+       		<result name="success">success2.jsp</result>
+     	 	<result name="error">error2.jsp</result>
       </action>
+      
    </package>
 </struts>

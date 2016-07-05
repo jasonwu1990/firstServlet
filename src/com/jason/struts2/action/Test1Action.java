@@ -12,11 +12,13 @@ public class Test1Action extends ActionSupport{
 	private String name;
 
 	public String execute() throws Exception {
-		if("SECRET".endsWith(name)) {
+		System.out.println("Inside action...");
+		
+//		if("SECRET".endsWith(name)) {
 			return SUCCESS;
-		}else {
-			return ERROR;
-		}
+//		}else {
+//			return ERROR;
+//		}
 	}
 	
 	public String getName() {

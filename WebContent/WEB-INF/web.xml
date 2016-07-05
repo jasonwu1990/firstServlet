@@ -2,10 +2,11 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="firstServlet" version="3.0">
   <display-name>Struts 2</display-name>
    <welcome-file-list>
-      <welcome-file>index.jsp</welcome-file>
+      <welcome-file>index2.jsp</welcome-file>
    </welcome-file-list>
    <filter>
       <filter-name>struts2</filter-name>
+      <!-- struts2.5以上的拦截器路径 -->
       <filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
    </filter>
    <filter-mapping>
