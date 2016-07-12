@@ -1,5 +1,10 @@
 package com.jason.sort;
 
+/**
+ * 插入排序
+ * @author wufan
+ *
+ */
 public class InsertionSort {
 
 	/**
