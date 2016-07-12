@@ -2,5 +2,5 @@ package com.jason.proxy;
 
 public interface IActionTwo {
 
-	String login(String username, String passwd);
+	String login2(String username, String passwd);
 }

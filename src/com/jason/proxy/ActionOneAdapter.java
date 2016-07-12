@@ -16,12 +16,12 @@ public class ActionOneAdapter implements InvocationHandler {
 	public Object invoke(Object proxy, Method method, Object[] args)
 			throws Throwable {
 		String methodName = method.getName();
-		if("login".equals(methodName)) {
+		if("login2".equals(methodName)) {
 			String username = (String) args[0];
 			String passwd = (String) args[1];
 			String gender = searchGender(username);
 			try{
-				Method method1 = ActionOne.class.getMethod(methodName, new Class<?>[]{String.class, String.class, String .class});
+				Method method1 = ActionOne.class.getMethod("login", new Class<?>[]{String.class, String.class, String .class});
 				return method1.invoke(actionOne, new Object[]{username, passwd, gender});
 			}catch (InvocationTargetException e) {
 //				Throwable cause = e.getCause();
