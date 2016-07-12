@@ -26,9 +26,10 @@ public class InsertionSort {
 		
 		for(i = 1; i < length; i++) {
 			for(j = i - 1; j >= 0 && array[j] > array[j+1]; j--) {
-				int temp = array[j];
-				array[j] = array[j+1];
-				array[j+1] = temp;
+				// 异或 异为真，同为假
+				array[j] = array[j] ^ array[j+1];
+				array[j+1] = array[j+1] ^ array[j];
+				array[j] = array[j] ^ array[j+1];
 			}
 		}
 	}
