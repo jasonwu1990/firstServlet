@@ -78,12 +78,109 @@ public class HeapSort {
 	}
 	
 	
+	/**
+	 * 删除堆中的元素，只能删除第0个(将第0个的值设置为数组最后一个值)
+	 * 
+	 * @param array
+	 * @return
+	 */
+	public static int[] delEleInHeap(int[] array) {
+		if(array == null || array.length <= 0) {
+			return null;
+		}
+		// 最后一个值置为根节点
+		array[0] = array[array.length - 1];
+		int[] endArray = new int[array.length - 1];
+		System.arraycopy(array, 0, endArray, 0, endArray.length);
+		
+		// 根节点下标
+		int root = 0;
+		// 获取根节点的值
+		int temp = endArray[root];
+		// 获得左孩子节点
+		int leftChild = 2*root + 1;
+		
+		while(leftChild < endArray.length) {
+			// 若右孩子存在，且右孩子比左孩子小(取左右孩子中最小的那个)
+			if(leftChild + 1 < endArray.length && endArray[leftChild + 1] < endArray[leftChild]) {
+				leftChild++;
+			}
+			// 将左右孩子中最小的值和temp值作比较，若孩子值比temp小，则已经符合了堆的规则
+			if(endArray[leftChild] > temp) {
+				break;
+			}
+			
+			// 小的值上移
+			endArray[root] = endArray[leftChild];
+			// 更新根节点
+			root = leftChild;
+			// 更新新的左孩子
+			leftChild = 2*root + 1;
+		}
+		endArray[root] = temp;
+		return endArray;
+	}
+	
+	/**
+	 * 堆排序(最小堆获得从小到大排序)
+	 * 大致逻辑-->将0和堆的最后一个交换，将前n-1个重新构成一个堆，将0和新堆的最后一个交换，重复操作，得到从大到小的排序
+	 */
+	public static void heapSort(int[] array) {
+		// 先转换为一个最小堆
+		HeapSort.sortEle(array);
+		
+		int lastTag = array.length - 1;
+		while(lastTag > 0) {
+			array[0] = array[0] ^ array[lastTag];
+			array[lastTag] = array[lastTag] ^ array[0];
+			array[0] = array[0] ^ array[lastTag];
+			
+			// 根节点下标
+			int root = 0;
+			// 获取根节点的值
+			int temp = array[root];
+			// 获得左孩子节点
+			int leftChild = 2*root + 1;
+			
+			while(leftChild < lastTag) {
+				// 若右孩子存在，且右孩子比左孩子小(取左右孩子中最小的那个)
+				if(leftChild + 1 < lastTag && array[leftChild + 1] < array[leftChild]) {
+					leftChild++;
+				}
+				// 将左右孩子中最小的值和temp值作比较，若孩子值比temp小，则已经符合了堆的规则
+				if(array[leftChild] > temp) {
+					break;
+				}
+				
+				// 小的值上移
+				array[root] = array[leftChild];
+				// 更新根节点
+				root = leftChild;
+				// 更新新的左孩子
+				leftChild = 2*root + 1;
+			}
+			array[root] = temp;
+			lastTag --;
+		}
+	}
+	
+	
 	public static void main(String[] args) {
 		int[] array = {3,20,11,8,5,6,8,10,50,30};
 		
 		int[] destArray = HeapSort.addEle(array, 5);
 		
 		HeapSort.sortEle(destArray);
+		for(int tag : destArray) {
+			System.out.println(tag);
+		}
+		System.out.println("分割线1~~~~~~~~~~~~~~~~~~~~~~~~~~");
+		destArray = HeapSort.delEleInHeap(destArray);
+		for(int tag : destArray) {
+			System.out.println(tag);
+		}
+		System.out.println("分割线2~~~~~~~~~~~~~~~~~~~~~~~~~~");
+		HeapSort.heapSort(destArray);
 		for(int tag : destArray) {
 			System.out.println(tag);
 		}
